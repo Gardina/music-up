@@ -14,7 +14,8 @@ module.exports = function() {
     netWorth: randomBetween(0, 5000000),
     labelName: faker.company.companyName(),
     retired: faker.random.boolean(),
-    albums: getAlbums()
+    albums: getAlbums(),
+    phrase: faker.lorem.text()
   };
 }
 

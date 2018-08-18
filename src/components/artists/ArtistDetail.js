@@ -54,7 +54,7 @@ class ArtistDetail extends Component {
   render() {
     if (!this.props.artist) { return <div>Todo: implement "FindArtist" query</div>; }
 
-    const { artist: { name, age, genre, image, yearsActive, netWorth, labelName, _id } } = this.props;
+    const { artist: { name, age, genre, image, yearsActive, netWorth, labelName, _id, phrase } } = this.props;
 
     return (
       <div>
@@ -82,6 +82,10 @@ class ArtistDetail extends Component {
           <li className="collection-item">
             <h5>${netWorth}</h5>
             <p><i>Net Worth</i></p>
+          </li>
+          <li className="collection-item">
+            <h5>{phrase}</h5>
+            <p><i>Favourite Quote</i></p>
           </li>
           <li className="collection-item">
             <h5>{labelName}</h5>
