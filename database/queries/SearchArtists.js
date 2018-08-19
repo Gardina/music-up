@@ -14,13 +14,15 @@ module.exports = (_criteria, sortProperty, offset = 0, limit = 20) => {
   const criteria = _.extend({
     age: { min: 0, max: 100 },
     yearsActive: { min: 0, max: 100 },
-    name: ''
+    name: '',
+    netWorth: {min:0, max: 1000000000}
   }, _criteria);
 
   const artists = _.chain(db)
     .filter(a => _.includes(_.lowerCase(a.name), _.lowerCase(criteria.name)))
     .filter(a => a.age > criteria.age.min && a.age < criteria.age.max)
     .filter(a => a.yearsActive > criteria.yearsActive.min && a.yearsActive < criteria.yearsActive.max)
+    .filter(a => a.netWorth > criteria.netWorth.min && a.netWorth < criteria.netWorth.max)
     .sortBy(a => a[sortProperty])
     .value()
 
