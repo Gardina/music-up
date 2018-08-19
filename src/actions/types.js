@@ -1,5 +1,6 @@
-export const SET_AGE_RANGE = 'set_age_range';
+export const SET_AGE_RANGE = 'SET_AGE_RANGE';
 export const SET_YEARS_ACTIVE_RANGE = 'SET_YEARS_ACTIVE_RANGE';
+export const SET_NETWORTH_RANGE = 'SET_NETWORTH_RANGE';
 export const SEARCH_ARTISTS = 'SEARCH_ARTISTS';
 export const FIND_ARTIST = 'FIND_ARTIST';
 export const RESET_ARTIST = 'RESET_ARTIST';

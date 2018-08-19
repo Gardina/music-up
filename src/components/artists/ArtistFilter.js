@@ -25,6 +25,7 @@ class ArtistFilter extends Component {
   componentDidMount() {
     this.props.setAgeRange();
     this.props.setYearsActiveRange();
+    this.props.setNetWorthRange();
   }
 
   handleSubmit(formProps) {
@@ -72,6 +73,17 @@ class ArtistFilter extends Component {
 
             <div className="input-field">
               <Field
+                id="net-worth"
+                label="Net Worth $$$"
+                component={Range}
+                type="text"
+                name="netWorth"
+                range={this.props.netWorthRange}
+              />
+            </div>
+
+            <div className="input-field">
+              <Field
                 id="years-active"
                 label="Years Active"
                 component={Range}
@@ -104,6 +116,7 @@ const mapStateToProps = (state) => {
   const { filterCriteria } = state;
 
   return {
+    netWorthRange: filterCriteria.netWorthRange,
     yearsActive: filterCriteria.yearsActive,
     ageRange: filterCriteria.age,
     filters: state.form.filters && state.form.filters.values

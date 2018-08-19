@@ -3,6 +3,7 @@ import { hashHistory } from 'react-router';
 import {
   SET_AGE_RANGE,
   SET_YEARS_ACTIVE_RANGE,
+  SET_NETWORTH_RANGE,
   SEARCH_ARTISTS,
   FIND_ARTIST,
   RESET_ARTIST,
@@ -15,6 +16,7 @@ import {
 
 import GetAgeRange from '../../database/queries/GetAgeRange';
 import GetYearsActiveRange from '../../database/queries/GetYearsActiveRange';
+import GetNetWorthRange from '../../database/queries/GetNetWorthRange';
 import SearchArtists from '../../database/queries/SearchArtists';
 import FindArtist from '../../database/queries/FindArtist';
 import CreateArtist from '../../database/queries/CreateArtist';
@@ -60,6 +62,12 @@ export const setYearsActiveRange = () => dispatch =>
     .then(result =>
       dispatch({ type: SET_YEARS_ACTIVE_RANGE, payload: result })
     );
+
+export const setNetWorthRange = () => dispatch =>
+  GetNetWorthRangeProxy()
+    .then(result =>
+      dispatch({ type: SET_NETWORTH_RANGE, payload: result })
+   );
 
 export const searchArtists = (...criteria) => dispatch =>
   SearchArtistsProxy(...criteria)
@@ -113,6 +121,14 @@ const GetAgeRangeProxy = (...args) => {
 
 const GetYearsActiveRangeProxy = (...args) => {
   const result = GetYearsActiveRange(...args);
+  if (!result || !result.then) {
+    return new Promise(() => {});
+  }
+  return result;
+};
+
+const GetNetWorthRangeProxy = (...args) => {
+  const result = GetNetWorthRange(...args);
   if (!result || !result.then) {
     return new Promise(() => {});
   }
